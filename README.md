@@ -41,6 +41,16 @@ From the same container shell, start the server:
 ./build/server
 ```
 
+## See the frontend
+
+Once the server is running, open your browser to:
+
+```text
+http://localhost:8080/
+```
+
+That page serves the new occult-style NPC dossier UI. Click the button to generate a new NPC and view its age, race, subrace, sanity points, occupation, clothing, personality, and secret.
+
 If you want to start the server from the host using Docker Compose again, first stop the container and then run:
 
 ```powershell
