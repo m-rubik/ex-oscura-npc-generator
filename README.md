@@ -7,7 +7,7 @@ A minimal C++ NPC generator designed to run entirely inside Docker Compose.
 Build and start the container:
 
 ```bash
-docker compose up --build
+docker compose up --build -d
 ```
 
 This maps host port `8080` to container port `8080`.
@@ -29,8 +29,7 @@ docker compose exec npc-generator sh
 Then compile the project inside the container:
 
 ```sh
-cmake -S . -B build -D CMAKE_BUILD_TYPE=Release
-cmake --build build -j$(nproc)
+cmake -S . -B build -D CMAKE_BUILD_TYPE=Release && cmake --build build -j$(nproc)
 ```
 
 ## Run the server inside the container
