@@ -59,7 +59,7 @@ docker compose up --build
 ## Shortcut commands
 
 - `docker compose up --build -d` — start the container in detached mode
-- `docker compose exec npc-generator sh` — open a shell inside the running container
+- `docker compose exec npc-generator bash` — open a shell inside the running container
 - `docker compose down` — stop the container
 
 ## Notes

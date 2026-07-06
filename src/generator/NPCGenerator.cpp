@@ -288,7 +288,6 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
     - Bio (health, illness, condition, etc)
     - Stats?
     - Notable physical things like tattoos
-    - Wealth (tied to occupation & background?)
     - Items of note (pocketwatch, weapon, etc)
     
     */
