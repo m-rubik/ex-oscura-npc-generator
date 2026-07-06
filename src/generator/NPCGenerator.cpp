@@ -19,46 +19,65 @@ void NPCGenerator::generateAge(GenerationContext& ctx) {
 
 void NPCGenerator::generateClothing(GenerationContext& ctx) {
     // Clothing generation
-    // TODO: Implement gender preference
-
     const auto& clothingArray =
     (ctx.npc.gender == "male")
-        ? ctx.dataRoot["clothing"]["men"]["men"]
-        : ctx.dataRoot["clothing"]["women"]["women"];
+        ? ctx.dataRoot["clothing"]["men"]
+        : ctx.dataRoot["clothing"]["women"];
 
-    if (clothingArray.is_array() && !clothingArray.empty()) {
-        std::vector<std::string> chosenItems;
-        std::uniform_int_distribution<size_t> itemDist(0, clothingArray.size() - 1);
-        for (int i = 0; i < 3; ++i) {
-            const auto &selected = clothingArray[itemDist(ctx.rng)];
-            std::string name = selected.value("name", "");
-            if (!name.empty()) {
-                chosenItems.push_back(name);
-            }
-        }
-        if (!chosenItems.empty()) {
-            ctx.npc.clothing.clear();
-            for (const auto &itemName : chosenItems) {
-                ctx.npc.clothing.push_back({itemName, "", "", ""});
-            }
-            ctx.npc.clothingStyle = chosenItems[0];
-            if (chosenItems.size() > 1) {
-                ctx.npc.clothingStyle += ", " + chosenItems[1];
-            }
-            if (chosenItems.size() > 2) {
-                ctx.npc.clothingStyle += " and " + chosenItems[2];
-            }
-            ctx.generationLog.push_back(std::string("Clothing: ") + ctx.npc.clothingStyle);
+    std::vector<std::string> chosenItems;
+
+    ProbabilityMap clothingHeadMap;
+    for (const auto &entry : clothingArray["head"]) {
+        if (entry.contains("name") && entry.contains("weight")) {
+            clothingHeadMap.add(entry["name"].get<std::string>(), entry["weight"].get<int>());
         }
     }
+    if (!clothingHeadMap.weights().empty()) {
+        chosenItems.push_back(clothingHeadMap.pick(ctx.rng));
+    }
 
-    if (ctx.dataRoot.contains("clothing") && ctx.dataRoot["clothing"].contains("details")) {
-        const auto &details = ctx.dataRoot["clothing"]["details"];
-        if (details.contains("materials") && details["materials"].is_array()) {
-            std::uniform_int_distribution<size_t> matDist(0, details["materials"].size() - 1);
-            ctx.npc.clothingStyle += " in " + details["materials"][matDist(ctx.rng)].get<std::string>();
+    ProbabilityMap clothingBodyMap;
+    for (const auto &entry : clothingArray["body"]) {
+        if (entry.contains("name") && entry.contains("weight")) {
+            clothingBodyMap.add(entry["name"].get<std::string>(), entry["weight"].get<int>());
         }
     }
+    if (!clothingBodyMap.weights().empty()) {
+        chosenItems.push_back(clothingBodyMap.pick(ctx.rng));
+    }
+
+    ProbabilityMap clothingAccessoryMap;
+    for (const auto &entry : clothingArray["accessory"]) {
+        if (entry.contains("name") && entry.contains("weight")) {
+            clothingAccessoryMap.add(entry["name"].get<std::string>(), entry["weight"].get<int>());
+        }
+    }
+    if (!clothingAccessoryMap.weights().empty()) {
+        chosenItems.push_back(clothingAccessoryMap.pick(ctx.rng));
+    }
+    
+    if (!chosenItems.empty()) {
+        ctx.npc.clothing.clear();
+        for (const auto &itemName : chosenItems) {
+            ctx.npc.clothing.push_back({itemName, "", "", ""});
+        }
+        ctx.npc.clothingStyle = chosenItems[0];
+        if (chosenItems.size() > 1) {
+            ctx.npc.clothingStyle += ", " + chosenItems[1];
+        }
+        if (chosenItems.size() > 2) {
+            ctx.npc.clothingStyle += " and " + chosenItems[2];
+        }
+        ctx.generationLog.push_back(std::string("Clothing: ") + ctx.npc.clothingStyle);
+    }
+
+    // if (ctx.dataRoot.contains("clothing") && ctx.dataRoot["clothing"].contains("details")) {
+    //     const auto &details = ctx.dataRoot["clothing"]["details"];
+    //     if (details.contains("materials") && details["materials"].is_array()) {
+    //         std::uniform_int_distribution<size_t> matDist(0, details["materials"].size() - 1);
+    //         ctx.npc.clothingStyle += " in " + details["materials"][matDist(ctx.rng)].get<std::string>();
+    //     }
+    // }
 }
 
 void NPCGenerator::generateRace(GenerationContext& ctx) {
@@ -243,6 +262,22 @@ void NPCGenerator::generateOccupation(GenerationContext& ctx) {
     }
 }
 
+void NPCGenerator::generateWealth(GenerationContext& ctx) {
+    if (ctx.dataRoot.contains("wealth") && ctx.dataRoot["wealth"].contains("level")) {
+        ProbabilityMap wealthMap;
+        for (const auto &entry : ctx.dataRoot["wealth"]["level"]) {
+            if (entry.contains("name") && entry.contains("weight")) {
+                wealthMap.add(entry["name"].get<std::string>(), entry["weight"].get<int>());
+            }
+        }
+        if (!wealthMap.weights().empty()) {
+            std::string chosenWealth = wealthMap.pick(ctx.rng);
+            ctx.npc.wealth = chosenWealth;
+            ctx.generationLog.push_back(std::string("Wealth Level: ") + chosenWealth);
+        }
+    }
+}
+
 NPC NPCGenerator::generate(GenerationContext& ctx) {
     /*
     IDEAS:
@@ -258,16 +293,31 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
     
     */
     
+    // First, we generate the base of their identiy, which composes of:
+    // 1. Gender
+    // 2. Name
     IdentityGenerator idg;
     idg.generate(ctx);
 
-    generateAge(ctx);
-    generateClothing(ctx);
     generateRace(ctx);
-    generateSanity(ctx);
+
+    // Next most critical part to determine is their age, as this will factor into their occupation and other aspects.
+    generateAge(ctx);
+    
+    // Next, we choose their occupation, as this will influence their clothing and other aspects of their identity.
+    generateOccupation(ctx);
+
+    // Next, we generate their wealth level, as this is heavily tied to their occupation, will influence their clothing, etc.
+    // Note however, just because a person works as a lowly laborer, doesn't mean that they can't come from wealth.
+    generateWealth(ctx);
+
+    // Now, given the aspects generated above, we can generate their clothing.
+    generateClothing(ctx);
+
     generatePersonality(ctx);
     generateSecret(ctx);
-    generateOccupation(ctx);
+
+    generateSanity(ctx);
 
     return ctx.npc;
 }

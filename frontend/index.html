@@ -147,6 +147,7 @@
             <li><strong>Subrace:</strong> <span id="npcSubrace">—</span></li>
             <li><strong>Sanity Points:</strong> <span id="npcSanity">—</span></li>
             <li><strong>Occupation:</strong> <span id="npcOccupation">—</span></li>
+            <li><strong>Wealth:</strong> <span id="npcWealth">—</span></li>
             <li><strong>Gender:</strong> <span id="npcGender">—</span></li>
             <li><strong>Clothing:</strong> <span id="npcClothing">—</span></li>
             <li><strong>Personality:</strong>
@@ -200,6 +201,7 @@
       const npcSubrace = document.getElementById('npcSubrace');
       const npcSanity = document.getElementById('npcSanity');
       const npcOccupation = document.getElementById('npcOccupation');
+      const npcWealth = document.getElementById('npcWealth');
       const npcGender = document.getElementById('npcGender');
       const npcClothing = document.getElementById('npcClothing');
       const npcPersonalityCoreTrait = document.getElementById('npcPersonalityCoreTrait');
@@ -223,6 +225,7 @@
           npcSubrace.textContent = data.subrace || '—';
           npcSanity.textContent = data.sanity_points || '—';
           npcOccupation.textContent = data.occupation || '—';
+          npcWealth.textContent = data.wealth || '—';
           npcGender.textContent = data.gender || '—';
           npcClothing.textContent = data.clothing_style || '—';
           

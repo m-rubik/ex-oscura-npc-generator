@@ -1,24 +1,36 @@
 {
-  "women": [
-    { "name": "Cloche hat", "slot": "helmet", "location": "head", "notes": "Most iconic women’s 1920s hat" },
-    { "name": "Headband", "slot": "helmet", "location": "forehead", "notes": "Flapper fashion" },
-    { "name": "Bandeau", "slot": "helmet", "location": "forehead", "notes": "Flapper fashion" },
-    { "name": "Day dress", "slot": "body", "location": "full_torso_upper_legs", "notes": "Straight, loose silhouette" },
-    { "name": "Flapper dress", "slot": "body", "location": "torso_to_knees", "notes": "Evening/social wear" },
-    { "name": "Slip", "slot": "body", "location": "undergarment_torso", "notes": "Under dresses" },
-    { "name": "Chemise", "slot": "body", "location": "undergarment_torso", "notes": "Under dresses" },
-    { "name": "Brassiere", "slot": "body", "location": "chest", "notes": "Replaced earlier corsets" },
-    { "name": "Corset", "slot": "accessory", "location": "torso_waist", "notes": "Still used early decade" },
-    { "name": "Girdle", "slot": "accessory", "location": "torso_waist", "notes": "Still used early decade" },
-    { "name": "Stockings", "slot": "accessory", "location": "legs", "notes": "Silk or rayon" },
-    { "name": "Garters", "slot": "accessory", "location": "thighs", "notes": "Held stockings up" },
-    { "name": "Shawl", "slot": "necklace", "location": "shoulders", "notes": "Light outer accessory" },
-    { "name": "Fur stole", "slot": "necklace", "location": "upper_torso", "notes": "Luxury fashion item" },
-    { "name": "Gloves", "slot": "gauntlets", "location": "hands", "notes": "Common daytime wear" },
-    { "name": "T-strap heels", "slot": "boots", "location": "feet", "notes": "Typical footwear" },
-    { "name": "Mary Janes", "slot": "boots", "location": "feet", "notes": "Typical footwear" },
-    { "name": "Coat", "slot": "body", "location": "torso", "notes": "Outerwear" },
-    { "name": "Handbag", "slot": "accessory", "location": "hand", "notes": "Fashionable accessory" },
-    { "name": "Purse", "slot": "accessory", "location": "hand", "notes": "Fashionable accessory" }
+  "head": [
+    { "name": "Headband hat", "weight": 1},
+    { "name": "Trilby", "weight": 1},
+    { "name": "Bandeau", "weight": 1}
+  ],
+  "body": [
+    { "name": "Day dress", "weight": 1},
+    { "name": "Flapper dress", "weight": 1},
+    { "name": "Slip", "weight": 1},
+    { "name": "Chemise", "weight": 1},
+    { "name": "Brassiere", "weight": 1},
+    { "name": "Petticoat", "weight": 1},
+    { "name": "Skirt", "weight": 1},
+    { "name": "Blouse", "weight": 1}
+  ],
+  "accessory": [
+    { "name": "Corset", "weight": 1},
+    { "name": "Girdle", "weight": 1},
+    { "name": "Stockings", "weight": 1},
+    { "name": "Garters", "weight": 1},
+    { "name": "Shawl", "weight": 1},
+    { "name": "Fur stole", "weight": 1},
+    { "name": "Gloves", "weight": 1},
+    { "name": "T-strap heels", "weight": 1},
+    { "name": "Mary Janes", "weight": 1},
+    { "name": "Umbrella", "weight": 1},
+    { "name": "Coat", "weight": 1},
+    { "name": "Handbag", "weight": 1},
+    { "name": "Purse", "weight": 1},
+    { "name": "Necklace", "weight": 1},
+    { "name": "Earrings", "weight": 1},
+    { "name": "Bracelet", "weight": 1},
+    { "name": "Brooch", "weight": 1}
   ]
 }

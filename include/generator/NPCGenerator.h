@@ -14,6 +14,7 @@ protected:
     void generatePersonality(GenerationContext& ctx);
     void generateSecret(GenerationContext& ctx);
     void generateOccupation(GenerationContext& ctx);
+    void generateWealth(GenerationContext& ctx);
 };
 
 } // namespace exob

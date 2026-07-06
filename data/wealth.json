@@ -1,0 +1,10 @@
+{
+  "level": [
+    { "name": "Destitute", "weight": 5},
+    { "name": "Poor", "weight": 25},
+    { "name": "Average", "weight": 50},
+    { "name": "Wealthy", "weight": 15},
+    { "name": "Rich", "weight": 4},
+    { "name": "Incredibly Rich", "weight": 1}
+  ]
+}

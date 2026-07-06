@@ -1,97 +1,97 @@
 {
   "base_neutrals": [
-    "black",
-    "white",
-    "ivory",
-    "cream",
-    "grey",
-    "charcoal",
-    "beige",
-    "taupe",
-    "brown",
-    "dark brown"
+    {"name": "black", "weight": 1},
+    {"name": "white", "weight": 1},
+    {"name": "ivory", "weight": 1},
+    {"name": "cream", "weight": 1},
+    {"name": "grey", "weight": 1},
+    {"name": "charcoal", "weight": 1},
+    {"name": "beige", "weight": 1},
+    {"name": "taupe", "weight": 1},
+    {"name": "brown", "weight": 1},
+    {"name": "dark brown", "weight": 1}
   ],
 
   "menswear_core": [
-    "navy",
-    "midnight blue",
-    "dark green",
-    "olive",
-    "burgundy",
-    "maroon",
-    "tobacco brown",
-    "pinstripe grey",
-    "steel grey"
+    {"name": "navy", "weight": 1},
+    {"name": "midnight blue", "weight": 1},
+    {"name": "dark green", "weight": 1},
+    {"name": "olive", "weight": 1},
+    {"name": "burgundy", "weight": 1},
+    {"name": "maroon", "weight": 1},
+    {"name": "tobacco brown", "weight": 1},
+    {"name": "pinstripe grey", "weight": 1},
+    {"name": "steel grey", "weight": 1}
   ],
 
   "womenswear_core": [
-    "champagne",
-    "soft rose",
-    "lavender",
-    "powder blue",
-    "emerald green",
-    "deep red",
-    "midnight black",
-    "cream silk",
-    "pearl white"
+    {"name": "champagne", "weight": 1},
+    {"name": "soft rose", "weight": 1},
+    {"name": "lavender", "weight": 1},
+    {"name": "powder blue", "weight": 1},
+    {"name": "emerald green", "weight": 1},
+    {"name": "deep red", "weight": 1},
+    {"name": "midnight black", "weight": 1},
+    {"name": "cream silk", "weight": 1},
+    {"name": "pearl white", "weight": 1}
   ],
 
-  "accent_colors": [
-    "gold",
-    "silver",
-    "brass",
-    "copper",
-    "mahogany",
-    "faded crimson",
-    "dusty blue",
-    "muted green",
-    "aged bronze"
+  "jewelry_materials": [
+    {"name": "gold", "weight": 1},
+    {"name": "silver", "weight": 1},
+    {"name": "copper", "weight": 1},
+    {"name": "bronze", "weight": 1},
+    {"name": "rose gold", "weight": 1},
+    {"name": "platinum", "weight": 1},
+    {"name": "pearl", "weight": 1},
+    {"name": "crystal", "weight": 1},
+    {"name": "diamond", "weight": 1}
   ],
 
   "muted_tones": [
-    "faded blue",
-    "washed out green",
-    "dusty brown",
-    "pale yellow",
-    "smoke grey",
-    "sun-bleached beige",
-    "rusted red"
+    {"name": "faded blue", "weight": 1},
+    {"name": "washed out green", "weight": 1},
+    {"name": "dusty brown", "weight": 1},
+    {"name": "pale yellow", "weight": 1},
+    {"name": "smoke grey", "weight": 1},
+    {"name": "sun-bleached beige", "weight": 1},
+    {"name": "rusted red", "weight": 1}
   ],
 
   "rich_colors": [
-    "deep emerald",
-    "royal purple",
-    "crimson red",
-    "sapphire blue",
-    "jet black",
-    "wine red",
-    "hunter green"
+    {"name": "deep emerald", "weight": 1},
+    {"name": "royal purple", "weight": 1},
+    {"name": "crimson red", "weight": 1},
+    {"name": "sapphire blue", "weight": 1},
+    {"name": "jet black", "weight": 1},
+    {"name": "wine red", "weight": 1},
+    {"name": "hunter green", "weight": 1}
   ],
 
   "wear_states": [
-    "new",
-    "clean",
-    "pressed",
-    "worn",
-    "faded",
-    "creased",
-    "patched",
-    "mud-stained",
-    "rain-dampened",
-    "oil-stained",
-    "sun-faded",
-    "dust-covered"
+    {"name": "new", "weight": 1},
+    {"name": "clean", "weight": 1},
+    {"name": "pressed", "weight": 1},
+    {"name": "worn", "weight": 1},
+    {"name": "faded", "weight": 1},
+    {"name": "creased", "weight": 1},
+    {"name": "patched", "weight": 1},
+    {"name": "mud-stained", "weight": 1},
+    {"name": "rain-dampened", "weight": 1},
+    {"name": "oil-stained", "weight": 1},
+    {"name": "sun-faded", "weight": 1},
+    {"name": "dust-covered", "weight": 1}
   ],
 
   "materials": [
-    "wool",
-    "cotton",
-    "linen",
-    "silk",
-    "leather",
-    "tweed",
-    "felt",
-    "velvet",
-    "satin"
+    {"name": "wool", "weight": 1},
+    {"name": "cotton", "weight": 1},
+    {"name": "linen", "weight": 1},
+    {"name": "silk", "weight": 1},
+    {"name": "leather", "weight": 1},
+    {"name": "tweed", "weight": 1},
+    {"name": "felt", "weight": 1},
+    {"name": "velvet", "weight": 1},
+    {"name": "satin", "weight": 1}
   ]
 }

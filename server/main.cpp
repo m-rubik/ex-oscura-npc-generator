@@ -72,6 +72,7 @@ int main(int argc, char** argv) {
     ctx.dataRoot["personalities"] = loadData("data/personalities.json");
     ctx.dataRoot["secrets"] = loadData("data/secrets.json");
     ctx.dataRoot["races"] = loadData("data/races.json");
+    ctx.dataRoot["wealth"] = loadData("data/wealth.json");
 
     ctx.dataRoot["occupations"] = loadData("data/occupations/occupations.json");
     if (ctx.dataRoot["occupations"].contains("categories")) {
@@ -141,6 +142,7 @@ int main(int argc, char** argv) {
                 {"personality", personalityObj}, 
                 {"occultSensitivity", npc.occultSensitivity}, 
                 {"secret", npc.secret}, 
+                {"wealth", npc.wealth}, 
                 {"log", localCtx.generationLog} };
             send_json_response(client, out.dump(2));
         } else if (method == "POST" && path == "/npc") {
@@ -177,6 +179,7 @@ int main(int argc, char** argv) {
                     {"personality", personalityObj}, 
                     {"occultSensitivity", npc.occultSensitivity},
                     {"secret", npc.secret}, 
+                    {"wealth", npc.wealth},
                     {"log", localCtx.generationLog} 
                 };
                 send_json_response(client, out.dump(2));

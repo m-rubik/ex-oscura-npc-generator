@@ -1,27 +1,36 @@
 {
-  "men": [
-    { "name": "Fedora", "slot": "helmet", "location": "head", "notes": "Most iconic men’s hat of the era" },
-    { "name": "Trilby", "slot": "helmet", "location": "head", "notes": "Most iconic men’s hat of the era" },
-    { "name": "Flat cap", "slot": "helmet", "location": "head", "notes": "Working-class casual wear" },
-    { "name": "Newsboy cap", "slot": "helmet", "location": "head", "notes": "Working-class casual wear" },
-    { "name": "Dress shirt", "slot": "body", "location": "torso_upper", "notes": "Usually white or striped" },
-    { "name": "Detachable collar", "slot": "necklace", "location": "neck", "notes": "Popular early-1920s formal wear" },
-    { "name": "Tie", "slot": "necklace", "location": "neck", "notes": "Common everyday accessory" },
-    { "name": "Bow tie", "slot": "necklace", "location": "neck", "notes": "Common everyday accessory" },
-    { "name": "Waistcoat", "slot": "body", "location": "torso_mid", "notes": "Often part of 3-piece suit" },
-    { "name": "Vest", "slot": "body", "location": "torso_mid", "notes": "Often part of 3-piece suit" },
-    { "name": "Suit jacket", "slot": "body", "location": "torso_upper", "notes": "Standard outer suit layer" },
-    { "name": "Sack coat", "slot": "body", "location": "torso_upper", "notes": "Standard outer suit layer" },
-    { "name": "Overcoat", "slot": "body", "location": "full_torso", "notes": "Winter outerwear" },
-    { "name": "Trousers", "slot": "body", "location": "legs", "notes": "High-waisted, wide leg" },
-    { "name": "Suspenders", "slot": "accessory", "location": "torso", "notes": "Held trousers up" },
-    { "name": "Braces", "slot": "accessory", "location": "torso", "notes": "Held trousers up" },
-    { "name": "Belt", "slot": "accessory", "location": "waist", "notes": "Became more common late-1920s" },
-    { "name": "Socks", "slot": "accessory", "location": "lower_legs", "notes": "Often patterned" },
-    { "name": "Oxford shoes", "slot": "boots", "location": "feet", "notes": "Standard dress footwear" },
-    { "name": "Spats", "slot": "boots", "location": "ankles", "notes": "Decorative formal accessory" },
-    { "name": "Gloves", "slot": "gauntlets", "location": "hands", "notes": "Formal wear" },
-    { "name": "Leather driving gloves", "slot": "gauntlets", "location": "hands", "notes": "Working man accessory" },
-    { "name": "Pocket watch", "slot": "accessory", "location": "vest_pocket", "notes": "Common accessory" }
+  "head": [
+    { "name": "Fedora", "weight": 1},
+    { "name": "Trilby", "weight": 1},
+    { "name": "Bowler", "weight": 1},
+    { "name": "Homburg", "weight": 1},
+    { "name": "Flat cap", "weight": 1},
+    { "name": "Newsboy cap", "weight": 1}
+  ],
+  "body": [
+    { "name": "Dress shirt", "weight": 1},
+    { "name": "Dress shirt with vest", "weight": 1},
+    { "name": "Dress shirt with suspenders", "weight": 1},
+    { "name": "Dress shirt with tie", "weight": 1},
+    { "name": "Dress shirt with bow tie", "weight": 1},
+    { "name": "Dress shirt with waistcoat", "weight": 1},
+    { "name": "Dress shirt with suit jacket", "weight": 1},
+    { "name": "Dress shirt with sack coat", "weight": 1},
+    { "name": "Dress shirt with overcoat", "weight": 1}
+  ],
+  "accessory": [
+    { "name": "Detachable collar", "weight": 1},
+    { "name": "Cufflinks", "weight": 1},
+    { "name": "Tie", "weight": 1},
+    { "name": "Bow tie", "weight": 1},
+    { "name": "Gloves", "weight": 1},
+    { "name": "Leather driving gloves", "weight": 1},
+    { "name": "Pocket watch", "weight": 1},
+    { "name": "Walking stick", "weight": 1},
+    { "name": "Umbrella", "weight": 1},
+    { "name": "Suspenders", "weight": 1},
+    { "name": "Braces", "weight": 1},
+    { "name": "Belt", "weight": 1},
+    { "name": "Socks", "weight": 1}
   ]
 }
