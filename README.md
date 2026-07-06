@@ -23,7 +23,7 @@ docker compose up --build -d
 Open a shell inside the running container:
 
 ```powershell
-docker compose exec npc-generator sh
+docker compose exec npc-generator bash
 ```
 
 Then compile the project inside the container:

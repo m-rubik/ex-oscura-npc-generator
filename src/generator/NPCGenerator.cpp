@@ -8,17 +8,16 @@
 
 namespace exob {
 
-NPC NPCGenerator::generate(GenerationContext& ctx) {
-    // Identity
-    IdentityGenerator idg;
-    idg.generate(ctx);
-
+void NPCGenerator::generateAge(GenerationContext& ctx) {
     // Age
     std::uniform_int_distribution<int> ageDist(18, 70);
     ctx.npc.age = ageDist(ctx.rng);
     ctx.generationLog.push_back(std::string("Age: ") + std::to_string(ctx.npc.age));
+}
 
+void NPCGenerator::generateClothing(GenerationContext& ctx) {
     // Clothing generation
+    // TODO: Implement gender preference
     if (ctx.dataRoot.contains("clothing") && ctx.dataRoot["clothing"].contains("items")) {
         const auto &items = ctx.dataRoot["clothing"]["items"];
         if (items.is_array() && !items.empty()) {
@@ -55,7 +54,9 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
             ctx.npc.clothingStyle += " in " + details["materials"][matDist(ctx.rng)].get<std::string>();
         }
     }
+}
 
+void NPCGenerator::generateRace(GenerationContext& ctx) {
     // Race generation
     if (ctx.dataRoot.contains("races")) {
         const auto &races = ctx.dataRoot["races"];
@@ -92,13 +93,17 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
             ctx.generationLog.push_back(std::string("Race: ") + ctx.npc.race + (ctx.npc.subrace.empty() ? "" : (" (" + ctx.npc.subrace + ")")));
         }
     }
+}
 
+void NPCGenerator::generateSanity(GenerationContext& ctx) {
     // Sanity points: 55 + 2d10
     std::uniform_int_distribution<int> d10(1, 10);
     ctx.npc.sanityPoints = 55 + d10(ctx.rng) + d10(ctx.rng);
     ctx.generationLog.push_back(std::string("Sanity Points: ") + std::to_string(ctx.npc.sanityPoints));
+}
 
-    // Personality and secret generation
+void NPCGenerator::generatePersonality(GenerationContext& ctx) {
+    // Personality generation
     if (ctx.dataRoot.contains("personalities")) {
         const auto &pers = ctx.dataRoot["personalities"];
         std::vector<std::string> selectedTraits;
@@ -122,7 +127,9 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
             ctx.generationLog.push_back(std::string("Personality: ") + ctx.npc.personality);
         }
     }
+}
 
+void NPCGenerator::generateSecret(GenerationContext& ctx) {
     if (ctx.dataRoot.contains("secrets")) {
         const auto &secrets = ctx.dataRoot["secrets"];
         std::vector<std::string> secretPools;
@@ -139,7 +146,9 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
             ctx.generationLog.push_back(std::string("Secret: ") + ctx.npc.secret);
         }
     }
+}
 
+void NPCGenerator::generateOccupation(GenerationContext& ctx) {
     // Occupation - select a main category first, then roll a job from the category's subtable
     if (ctx.dataRoot.contains("occupations") && ctx.dataRoot["occupations"].contains("categories")) {
         ProbabilityMap categoryMap;
@@ -199,6 +208,20 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
             ctx.generationLog.push_back(std::string("Occupation: ") + ctx.npc.occupation);
         }
     }
+}
+
+NPC NPCGenerator::generate(GenerationContext& ctx) {
+    // Identity
+    IdentityGenerator idg;
+    idg.generate(ctx);
+
+    generateAge(ctx);
+    generateClothing(ctx);
+    generateRace(ctx);
+    generateSanity(ctx);
+    generatePersonality(ctx);
+    generateSecret(ctx);
+    generateOccupation(ctx);
 
     return ctx.npc;
 }
