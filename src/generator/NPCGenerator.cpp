@@ -297,7 +297,6 @@ NPC NPCGenerator::generate(GenerationContext& ctx) {
     - Stats?
     - Notable physical things like tattoos
     - Items of note (pocketwatch, weapon, etc)
-    
     */
     
     // First, we generate the base of their identiy, which composes of:

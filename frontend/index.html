@@ -140,7 +140,6 @@
         <section class="card" id="npcCard">
           <div class="label">Case File</div>
           <h2 id="npcName">Awaiting report…</h2>
-          <p class="muted" id="npcSummary">No specimen selected yet.</p>
           <ul class="stat-list">
             <li><strong>Age:</strong> <span id="npcAge">—</span></li>
             <li><strong>Race:</strong> <span id="npcRace">—</span></li>
@@ -194,7 +193,6 @@
     <script>
       const generateBtn = document.getElementById('generateBtn');
       const npcName = document.getElementById('npcName');
-      const npcSummary = document.getElementById('npcSummary');
       const npcAge = document.getElementById('npcAge');
       const npcRace = document.getElementById('npcRace');
       const npcSanity = document.getElementById('npcSanity');
@@ -217,7 +215,6 @@
           const response = await fetch('/npc/random');
           const data = await response.json();
           npcName.textContent = data.name || 'Unknown figure';
-          npcSummary.textContent = `A ${data.age || '?'}-year-old figure drawn from the fog.`;
           npcAge.textContent = data.age || '—';
           npcRace.textContent = data.race || '—';
           npcSanity.textContent = data.sanity_points || '—';
