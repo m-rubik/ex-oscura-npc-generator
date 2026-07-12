@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
     ctx.dataRoot["secrets"] = loadData("data/secrets.json");
     ctx.dataRoot["races"] = loadData("data/races.json");
     ctx.dataRoot["wealth"] = loadData("data/wealth.json");
-
+    ctx.dataRoot["age"] = loadData("data/age.json");
     ctx.dataRoot["occupations"] = loadData("data/occupations/occupations.json");
     if (ctx.dataRoot["occupations"].contains("categories")) {
         for (auto &category : ctx.dataRoot["occupations"]["categories"]) {

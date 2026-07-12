@@ -12,9 +12,23 @@ namespace exob {
 
 void NPCGenerator::generateAge(GenerationContext& ctx) {
     // Age
-    std::uniform_int_distribution<int> ageDist(18, 70);
-    ctx.npc.age = ageDist(ctx.rng);
+    // std::uniform_int_distribution<int> ageDist(18, 70);
+    // ctx.npc.age = ageDist(ctx.rng);
+    // ctx.generationLog.push_back(std::string("Age: ") + std::to_string(ctx.npc.age));
+
+    // Age
+    const auto& ageData = ctx.dataRoot["age"];
+
+    ProbabilityMap ageMap;
+    for (const auto &entry : ageData["age"]) {
+        if (entry.contains("value") && entry.contains("weight")) {
+            ageMap.add(std::to_string(entry["value"].get<int>()), entry["weight"].get<int>());
+        }
+    }
+
+    ctx.npc.age = std::stoi(ageMap.pick(ctx.rng));
     ctx.generationLog.push_back(std::string("Age: ") + std::to_string(ctx.npc.age));
+
 }
 
 void NPCGenerator::generateClothing(GenerationContext& ctx) {
