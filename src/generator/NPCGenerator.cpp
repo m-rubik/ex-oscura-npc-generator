@@ -77,6 +77,12 @@ void NPCGenerator::generateAge(GenerationContext& ctx) {
     ctx.npc.age = std::stoi(ageMap.pick(ctx.rng));
 
     // Age Categories: need to define this somewhere better
+    // teenager: 16-17
+    // college: 18-22
+    // young_adult: 23-30
+    // adult: 31-50
+    // middle_aged: 51-65
+    // senior: 66-80
     if (ctx.npc.age >= 16 && ctx.npc.age <= 17) {
         ctx.npc.ageCategory = "teenager";
     } else if (ctx.npc.age >= 18 && ctx.npc.age <= 22) {
@@ -106,12 +112,12 @@ void NPCGenerator::generateOccupation(GenerationContext& ctx) {
             std::string table = cat.value("table", "");
             
             // Load age modifiers to occupations category
-            int modifier = 1;
+            double modifier = 1;
             const auto& ageCategories = ctx.dataRoot["modifiers"]["age"]["occupations_categories"][ctx.npc.ageCategory];
             if (ageCategories.contains(name) &&
                 ageCategories[name].contains("modifier"))
             {
-                modifier = ageCategories[name]["modifier"].get<int>();
+                modifier = ageCategories[name]["modifier"].get<double>();
             }
             weight *= modifier;
 
@@ -135,12 +141,12 @@ void NPCGenerator::generateOccupation(GenerationContext& ctx) {
                         int weight = job.value("weight", 1);
 
                         // Apply age modifier to job weight
-                        int modifier = 1;
+                        double modifier = 1;
                         const auto& ageCategories = ctx.dataRoot["modifiers"]["age"]["occupations"][ctx.npc.ageCategory];
                         if (ageCategories.contains(chosenCategory) &&
                             ageCategories[name].contains("modifier"))
                         {
-                            modifier = ageCategories[name]["modifier"].get<int>();
+                            modifier = ageCategories[name]["modifier"].get<double>();
                         }
                         weight *= modifier;
 
@@ -340,6 +346,23 @@ void NPCGenerator::generateWealth(GenerationContext& ctx) {
 }
 
 NPC NPCGenerator::generate(GenerationContext& ctx) {
+    /*
+        BUG:
+        Generation trace:
+        Identity: chosen name Maxwell Leavitt
+        Race: Halfling (Lightfoot)
+        Age: 69
+        Occupation category:
+        Occupation table missing:
+        Wealth Level: Poor
+        Clothing: Homburg, Dress shirt with sack coat and Belt
+        Personality: Core=curious Social=authoritative Emotional=sentimental
+        Occult Sensitivity: dismissive of occult
+        Secret: is secretly in love with someone inappropriate
+        Sanity Points: 57
+
+        How is occupation category blank?
+    */
     /*
     IDEAS:
     - Friends
